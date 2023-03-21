@@ -106,6 +106,7 @@ server_address=second_ubuntu_server_private_ip
 allowed_hosts=127.0.0.1,::1,your_nagios_server_private_ip
 ...
 command[check_xvda1]=/usr/local/nagios/libexec/check_disk -w 20% -c 10% -p /dev/xvda1
+
 sudo systemctl start nrpe.service
 sudo systemctl status nrpe.service
 sudo ufw allow 5666/tcp
@@ -137,9 +138,12 @@ define service {
         service_description             /dev/vda1 free space
         check_command                   check_nrpe!check_vda1
 }
+
 sudo systemctl restart nagios
+
 Other Integration Pagerduty and Monitoring Services
 https://www.youtube.com/watch?v=qwaMu6LlgWw
+
 Ansible + Nagios - 
 https://www.youtube.com/watch?v=vb5YpwanDms
 https://www.youtube.com/watch?v=6vfhflwC_Wg
